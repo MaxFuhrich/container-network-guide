@@ -114,11 +114,15 @@ Which outputs:
 ]
 ```
 If everything went right you should be able to call *localhost:8080/hello* in your browser, which returns a string.
+
 The endpoint */add* creates a new entry that only contains a string with the current time in our database (and returns this entry to the caller):
+
 ![Endpoint /add](tutorial-add.jpg "Endpoint /add")
 
 The endpoint */history* shows all elements of the database:
+
 ![Endpoint /history](tutorial-history.jpg "Endpoint /history")
+
 Congratulations, you successfully created a multi-container application in a custom bridge network!
 
 ![alt text](https://i.kym-cdn.com/photos/images/original/000/538/716/7f5.gif "Well done")
