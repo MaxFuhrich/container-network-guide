@@ -120,6 +120,7 @@ The endpoint */add* creates a new entry that only contains a string with the cur
 The endpoint */history* shows all elements of the database:
 ![Endpoint /history](tutorial-history.jpg "Endpoint /history")
 Congratulations, you successfully created a multi-container application in a custom bridge network!
+
 ![alt text](https://i.kym-cdn.com/photos/images/original/000/538/716/7f5.gif "Well done")
 
 To stop and remove the containers and the custom bridge network:
