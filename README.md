@@ -52,7 +52,7 @@ docker run -d --name mongodb --network hello-network mongo
 ```
 The flag -d runs the container detached so that you can use the terminal again.
 
-**Important**: Don't change the name of the MongoDB container as the other container uses this name to resolve it into an IP-address. This is called automatic service discovery. If you don't want to use *automatic service discovery* you can use the IPv4Address of the MongoDB container, which you get if you inspect the network (this won't work with the code as is, because the REST container tries to connect to the host "mongodb").
+**Important**: Don't change the name of the MongoDB container as the other container uses this name to resolve it into an IP-address. This is called *automatic service discovery*. If you don't want to use automatic service discovery you can use the IPv4Address of the MongoDB container, which you get if you inspect the network (this won't work with the code as is, because the REST container tries to connect to the host "mongodb").
 
 Now, the only thing that is left is to create & run the REST container, connect it to hello-network and expose a port so that the host can access it:
 ```
