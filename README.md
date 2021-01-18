@@ -1,6 +1,6 @@
 # Communicating with Docker containers in custom bridge networks
 There are situations in which a container in an isolated network is needed (e.g. if the database must not be exposed to outer networks but still be accessible in a way).
-This guide describes, how you can set up a container (MongoDB) in a custom bridge network and communicate with it via another container (a simple REST application) that is connected to the custom bridge and the default bridge network and how you can connect to this container (and make some calls to the api).
+This guide describes, how you can set up a container (MongoDB) in a custom bridge network and communicate with it via another container (a simple HTTP API) that is connected to the custom bridge and the default bridge network and how you can connect to this container (and make some calls to the api).
 The project used for this example can be found at https://github.com/MaxFuhrich/container-network-guide
 
 ## Prequisites
