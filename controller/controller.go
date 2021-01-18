@@ -15,8 +15,9 @@ import (
 var collection *mongo.Collection
 var ctx = context.TODO()
 
+//Setting up connection to MongoDB
 func init() {
-	clientOptions := options.Client().ApplyURI("mongodb://172.18.0.2:27017/")
+	clientOptions := options.Client().ApplyURI("mongodb://mongodb:27017/")
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		log.Fatal(err)

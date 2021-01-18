@@ -10,6 +10,7 @@ import (
 func main() {
 	router := gin.Default()
 
+	//Endpoints
 	router.GET("/hello", func(context *gin.Context) {
 		message := "Hello there!"
 		fmt.Println(message)
@@ -20,5 +21,8 @@ func main() {
 		controller.AddTime(context)
 	})
 	router.GET("/history", controller.History)
-	router.Run()
+	err := router.Run()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 }
