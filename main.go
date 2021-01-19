@@ -11,6 +11,11 @@ func main() {
 	router := gin.Default()
 
 	//Endpoints
+	router.GET("/", func(context *gin.Context) {
+		message := "Hello there!"
+		fmt.Println(message)
+		context.JSON(http.StatusOK, message)
+	})
 	router.GET("/hello", func(context *gin.Context) {
 		message := "Hello there!"
 		fmt.Println(message)
