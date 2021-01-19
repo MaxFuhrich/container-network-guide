@@ -32,7 +32,7 @@ docker network ls
 ```
 If your network is listed there, it has been created!
 ```
-C:\Users\Max>docker network ls
+docker network ls
 NETWORK ID     NAME            DRIVER    SCOPE
 e99d15db1b9a   bridge          bridge    local
 cc423edba456   hello-network   bridge    local
@@ -52,25 +52,26 @@ docker run -d --name mongodb --network hello-network mongo
 ```
 The flag -d runs the container detached so that you can use the terminal again.
 
-**Important**: Don't change the name of the MongoDB container as the other container uses this name to resolve it into an IP-address. This is called *automatic service discovery*. If you don't want to use automatic service discovery you can use the IPv4Address of the MongoDB container, which you get if you inspect the network (this won't work with the code as is, because the REST container tries to connect to the host "mongodb").
+**Important**: Don't change the name of the MongoDB container as the other container uses this name to resolve it into an IP-address. This is called *automatic service discovery*. If you don't want to use automatic service discovery you can use the IPv4Address of the MongoDB container, which you get if you inspect the network (this won't work with the code as is, because the HTTP container tries to connect to the host "mongodb").
 
-Now, the only thing that is left is to create & run the REST container, connect it to hello-network and expose a port so that the host can access it:
+Now, the only thing that is left is to create & run the HTTP container, connect it to hello-network and expose a port so that the host can access it:
 ```
-docker run -d --name rest-container --network hello-network -p 8080:8080 maxfuhrich/container-network-example
+docker run -d --name http-container --network hello-network -p 8080:8080 maxfuhrich/container-network-example
 ```
-**-p** "host-port:container-port" publishes/maps a TCP port in the container (8080)on a port on the host (8080). If the port 8080 on the host is already in use, you can change the port to any other one that is free.
-**Note**: You can omit the -d flag if you want to see the output of the REST application in your terminal.
+**-p** "host-port:container-port" publishes/maps a TCP port in the container (8080) on a port on the host (8080). If the port 8080 on the host is already in use, you can change the port to any other one that is free.
+
+**Note**: You can omit the -d flag if you want to see the output of the HTTP application in your terminal.
 
 To check if your containers are running in your custom bridge network you can inspect it:
 ```
-C:\Users\Max>docker inspect hello-network
+docker inspect hello-network
 ```
 Which outputs:
 ```
 [
     {
         "Name": "hello-network",
-        "Id": "cc423edba4561092191ecc63970cccdb4341b644864b93943dcc1ff5fbdacc2a",
+        "Id": "cc423edba4561250791ecc63970cccdb4341b644864b27443dcc1ff5fbdacc2a",
         "Created": "2021-01-12T14:50:53.9820995Z",
         "Scope": "local",
         "Driver": "bridge",
@@ -94,16 +95,16 @@ Which outputs:
         "ConfigOnly": false,
         "Containers": {
             "48ca87014d0f6b656fbda0ffd8c6d1402cfab0dda0dd1032abcf45a1bb64b990": {
-                "Name": "rest-container",
-                "EndpointID": "d83b38fee850568a56fdd8674d61cc181eaf6b968f7d78aaf238952b8bc96b08",
-                "MacAddress": "02:42:ac:12:00:03",
+                "Name": "http-container",
+                "EndpointID": "...",
+                "MacAddress": "00:00:aa:00:00:00",
                 "IPv4Address": "172.18.0.3/16",
                 "IPv6Address": ""
             },
             "83cd03b01c5c37295d8861a42cffd7aa3fbba4856c9b158c3e10866008b6a902": {
                 "Name": "mongodb",
-                "EndpointID": "5b4d4ac931f7544ed0644d3fc677166e56633ae1e6a5a610acda6914d85f8f9f",
-                "MacAddress": "02:42:ac:12:00:02",
+                "EndpointID": "...",
+                "MacAddress": "00:00:aa:00:00:01",
                 "IPv4Address": "172.18.0.2/16",
                 "IPv6Address": ""
             }
@@ -119,18 +120,18 @@ The endpoint */add* creates a new entry that only contains a string with the cur
 
 ![Endpoint /add](tutorial-add.jpg "Endpoint /add")
 
+**Note**: In practice this endpoint should use POST but for this guide GET is used so that it can be accessed via browser.
+
 The endpoint */history* shows all elements of the database:
 
 ![Endpoint /history](tutorial-history.jpg "Endpoint /history")
 
 Congratulations, you successfully created a multi-container application in a custom bridge network!
 
-![alt text](https://i.kym-cdn.com/photos/images/original/000/538/716/7f5.gif "Well done")
-
 To stop and remove the containers and the custom bridge network:
 ```
-docker container stop rest-container mongodb
-docker container rm rest-container mongodb
+docker container stop http-container mongodb
+docker container rm http-container mongodb
 docker network rm hello-network
 ```
 
