@@ -114,7 +114,7 @@ Which outputs:
     }
 ]
 ```
-If everything went right you should be able to call *localhost:8080/hello* in your browser, which returns a string.
+If everything went right you should be able to call *localhost:8080/hello* (*localhost:8080* works too) in your browser, which returns a string.
 
 The endpoint */add* creates a new entry that only contains a string with the current time in our database (and returns this entry to the caller):
 
