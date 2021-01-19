@@ -120,6 +120,8 @@ The endpoint */add* creates a new entry that only contains a string with the cur
 
 ![Endpoint /add](tutorial-add.jpg "Endpoint /add")
 
+**Note**: In practice this endpoint should use POST but for this guide GET is used so that it can be accessed via browser.
+
 The endpoint */history* shows all elements of the database:
 
 ![Endpoint /history](tutorial-history.jpg "Endpoint /history")
