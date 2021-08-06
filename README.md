@@ -33,7 +33,7 @@ Then, we get the image that was created for this tutorial:
 ```
 docker pull maxfuhrich/container-network-example
 ```
-If you prefer to build your own image instead of using the example image, feel free to use the code (and the Dockerfile) from this github repository.
+If you prefer to build your own image instead of using the example image, feel free to use the code (and the Dockerfile) from [this github repository](https://github.com/MaxFuhrich/container-network-guide "Container Network Tutorial").
 To see if the images have been pulled successfully we can list them with:
 ```
 docker image ls
