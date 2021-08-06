@@ -33,7 +33,7 @@ Anschließend holen wir das Image, das für dieses Tutorial erstellt wurde:
 ```
 docker pull maxfuhrich/container-network-example
 ```
-Falls du es vorziehst, dein eigenes Image zu erzeugen, anstatt das Beispiel-Image zu verwenden, darfst du den Code (und die Dockerfile) aus dem Github Repository gerne dafür verwenden.
+Falls du es vorziehst, dein eigenes Image zu erzeugen, anstatt das Beispiel-Image zu verwenden, darfst du den Code (und die Dockerfile) aus dem [Github Repository](https://github.com/MaxFuhrich/container-network-guide "Container Network Tutorial") gerne dafür verwenden.
 Um zu sehen ob die Images erfolgreich beschafft wurden, können wir diese auflisten mit:
 ```
 docker image ls
